@@ -16,3 +16,14 @@
     font-size: 25px;
     font-weight: 900;
 }
+
+.home,.wish {
+    text-decoration: none;
+    color: white;
+}
+.home:hover {
+    text-decoration: underline;
+}
+.wish:hover {
+    text-decoration: underline;
+}

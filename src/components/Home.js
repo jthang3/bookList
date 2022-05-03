@@ -2,24 +2,10 @@ import style from "./Home.module.css";
 import { useState, useEffect } from "react";
 import { useDebounce } from "use-debounce";
 import Book from "./Book";
-const Home = () => {
+const Home = ({addWish}) => {
     const [search,setSearch] = useState("");
     const [listBook,setListBook] = useState([]);
-    const [wish,setWish] = useState([]);
     const [value] = useDebounce(search,1000);
-    const addWishList = (id,title) => {
-        let newBook = wish.filter(book => book.id === id);
-        if(newBook.length === 0) {
-            setWish([
-                ...wish,
-                {
-                    id: id,
-                    title: title
-                }
-            ])
-
-        }
-    }
     useEffect(()=>{
         fetch(`https://www.googleapis.com/books/v1/volumes?q=bookname&startIndex=0&maxResults=20`)
             .then(data => data.json())
@@ -37,7 +23,7 @@ const Home = () => {
             <div className = {style["booklist--holder"]}>
                 {listBook.length > 0 ? listBook.map((data,index) => {
                     return(
-                        <Book key={index} data = {data} addWish = {addWishList} />
+                        <Book key={index} data = {data} addWish = {addWish} />
                     )
                 }):<h1>Loading...</h1>}
             </div>

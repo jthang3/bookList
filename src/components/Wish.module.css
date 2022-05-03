@@ -1,0 +1,10 @@
+.wish--lists {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.wish--main-wrapper {
+    margin: 10px;
+}
