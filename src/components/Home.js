@@ -6,15 +6,29 @@ const Home = ({addWish}) => {
     const [search,setSearch] = useState("");
     const [listBook,setListBook] = useState([]);
     const [value] = useDebounce(search,1000);
+    console.log(search,"simple search");
+    console.log(value,"Debounce search");
     useEffect(()=>{
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=bookname&startIndex=0&maxResults=20`)
+        if(value) {
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&startIndex=0&maxResults=20`)
             .then(data => data.json())
                 .then(data => {
                     setListBook([
                         ...data.items
                     ])
                 })
-    },[])
+        }
+        else {
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=bookname&startIndex=0&maxResults=20`)
+                .then(data => data.json())
+                    .then(data => {
+                        setListBook([
+                            ...data.items
+                        ])
+                    })
+
+        }
+    },[value])
     return(
         <div className={style.mainWrapper}>
             <div className={style.searchBook}>
