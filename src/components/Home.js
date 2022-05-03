@@ -6,8 +6,6 @@ const Home = ({addWish}) => {
     const [search,setSearch] = useState("");
     const [listBook,setListBook] = useState([]);
     const [value] = useDebounce(search,1000);
-    console.log(search,"simple search");
-    console.log(value,"Debounce search");
     useEffect(()=>{
         if(value) {
             fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&startIndex=0&maxResults=20`)
