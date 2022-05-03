@@ -1,0 +1,20 @@
+.mainWrapper {
+    position: relative;
+}
+
+.searchBook {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+}
+.booklist--holder {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
